@@ -3,8 +3,10 @@ const path = require('path');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const session = require('express-session');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const routes = require('./routes');
+// const routes = require('./routes');
+const routes = require('./controllers');
 const sequelize = require('./config');
 
 const hbs = exphbs.create({});
@@ -13,8 +15,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const sessionSettings = {
     secret: process.env.SESSION_SECRET,
+    cookie: {},
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+        db: sequelize,
+    }),
 };
 
 app.engine('handlebars', hbs.engine);
