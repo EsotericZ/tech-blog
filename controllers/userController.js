@@ -25,6 +25,7 @@ module.exports = {
             const users = usersData.map(user => user.get({ plain: true }));
             res.render('allUsers', {
                 users,
+                loggedInUser: req.session.user || null,
             });
         } catch (e) {
             res.json(e);
@@ -37,6 +38,20 @@ module.exports = {
             res.render('singleUser', {
                 user
             });
+        } catch (e) {
+            res.json(e);
+        }
+    },
+    login: async (req, res) => {
+        try{
+            const userData = await User.findOne({ email: req.body.email });
+            const userFound = userData.get({ plain: true });
+            if (userFound.password === req.body.password) {
+                req.session.save(() => {
+                    req.session.user = userFound;
+                    res.json({ success: true });
+                });
+            }
         } catch (e) {
             res.json(e);
         }
