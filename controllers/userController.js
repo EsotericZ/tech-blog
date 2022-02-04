@@ -24,6 +24,10 @@ module.exports = {
 		res.render('homepage');
 	},
 
+	renderDashboard: async (req, res) => {
+		res.render('dashboard');
+	},
+
 	getUserById: async (req, res) => {
 		req.session.save(() => {
 			if (req.session.visitCount) {
