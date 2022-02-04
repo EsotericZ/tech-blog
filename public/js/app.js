@@ -10,7 +10,7 @@ $(document).ready(function() {
 			email: emailField.val().trim(),
 			password: passwordField.val().trim(),
 		});
-		window.location.href = '/todos';
+		window.location.href = '/homepage';
 	});
 	
 	logoutBtn.on('click', async function() {

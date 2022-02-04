@@ -21,11 +21,13 @@
 <ul class="list-group">
   {{#each userPosts as |post| }}
       <li>{{post.title}}</li>
-      <li>{{post.body}}</li>
+      {{!-- <li>{{post.body}}</li> --}}
   {{/each}}
 </ul>
 
-<form>
+<button type="button" class="btn btn-dark" id="createPostBtn">Create New Post</button>
+
+{{!-- <form>
   <div class="mb-3">
     <label for="titleField" class="form-label">Please Enter a Title</label>
     <input type="text" class="form-control" id="titleField" aria-describedby="emailHelp">
@@ -35,4 +37,4 @@
     <input type="text" class="form-control" id="bodyField" aria-describedby="emailHelp">
   </div>
   <button type="submit" class="btn btn-primary" id="addPostBtn">Submit</button>
-</form>
+</form> --}}

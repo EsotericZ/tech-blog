@@ -20,10 +20,6 @@ module.exports = {
 		}
 	},
 
-	renderHomePage: async (req, res) => {
-		res.render('homepage');
-	},
-
 	renderDashboard: async (req, res) => {
 		res.render('dashboard');
 	},
@@ -77,7 +73,7 @@ module.exports = {
 			req.session.save(() => {
 				req.session.loggedIn = true;
 				req.session.user = user;
-				res.redirect('/todos');
+				res.redirect('/homepage');
 			});
 		} catch (e) {
 			res.json(e);
@@ -86,14 +82,14 @@ module.exports = {
 
 	loginView: (req, res) => {
 		if (req.session.loggedIn) {
-			return res.redirect('/todos');
+			return res.redirect('/homepage');
 		}
 		res.render('login');
 	},
 
 	signupView: (req, res) => {
 		if (req.session.loggedIn) {
-			return res.redirect('/todos');
+			return res.redirect('/homepage');
 		}
 		res.render('signUp');
 	},

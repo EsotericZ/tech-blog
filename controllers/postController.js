@@ -1,7 +1,7 @@
 const { Post } = require('../models');
 
 module.exports = {
-	getAllPosts: async (req, res) => {
+	getUserPosts: async (req, res) => {
 		if (!req.session.loggedIn) {
 			return res.redirect('/login');
 		}
@@ -21,7 +21,7 @@ module.exports = {
 	},
 
 	createPost: async (req, res) => {
-		const { post } = req.body;
+		const { title, body } = req.body;
 		try {
 			const newPost = await Post.create({
 				title,
