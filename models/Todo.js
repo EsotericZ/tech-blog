@@ -1,32 +1,28 @@
 const { Model, DataTypes, UUIDV4 } = require('sequelize');
 const sequelize = require('../config');
 
-class User extends Model {}
+class Todo extends Model {}
 
-User.init(
+Todo.init(
 	{
 		id: {
 			type: DataTypes.UUID,
 			defaultValue: UUIDV4,
 			primaryKey: true,
 		},
-		username: {
+		task: {
 			type: DataTypes.STRING,
 			allowNull: false,
 		},
-		email: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			unique: true,
-			validate: {
-				isEmail: true,
-			}
+		completed: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: false,
 		},
-		password: {
-			type: DataTypes.STRING,
-			allowNull: false,
-			validate: {
-				len: [6]
+		userId: {
+			type: DataTypes.UUID,
+			references: {
+				model: 'user',
+				key: 'id',
 			}
 		}
 	},
@@ -34,8 +30,8 @@ User.init(
 		sequelize,
 		timestamps: false,
 		freezeTableName: true,
-		modelName: 'user',
+		modelName: 'todo'
 	}
 );
 
-module.exports = User;
+module.exports = Todo;

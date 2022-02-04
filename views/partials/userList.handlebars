@@ -2,7 +2,7 @@
   {{#each users as |user|}}
     <li>
       <p>User id: {{user.id}}</p>
-      <p>Username: {{user.username}}</p>
+      <p>Username: {{toUpperCase user.username}}</p>
       <p>User email: {{user.email}}</p>
       <p>User password: {{user.password}}</p>
     </li>
