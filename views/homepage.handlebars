@@ -16,4 +16,23 @@
   </div>
 </nav>
 
-<h1>Hello world HOME</h1>
+<h1>Welcome {{user.username}}</h1>
+
+<ul class="list-group">
+  {{#each userPosts as |post| }}
+      <li>{{post.title}}</li>
+      <li>{{post.body}}</li>
+  {{/each}}
+</ul>
+
+<form>
+  <div class="mb-3">
+    <label for="titleField" class="form-label">Please Enter a Title</label>
+    <input type="text" class="form-control" id="titleField" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="bodyField" class="form-label">Please Enter a Body</label>
+    <input type="text" class="form-control" id="bodyField" aria-describedby="emailHelp">
+  </div>
+  <button type="submit" class="btn btn-primary" id="addPostBtn">Submit</button>
+</form>
