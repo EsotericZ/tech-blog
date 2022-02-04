@@ -17,3 +17,11 @@
 </nav>
 
 <h1>Hello world DASH</h1>
+
+<ul class="list-group">
+  {{#each allPosts as |post| }}
+      <li>{{post.title}}</li>
+      <li>{{post.body}}</li>
+      <li>{{post.userId}}</li>
+  {{/each}}
+</ul>

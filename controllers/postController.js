@@ -20,6 +20,23 @@ module.exports = {
 		}
 	},
 
+	getAllPosts: async (req, res) => {
+		if (!req.session.loggedIn) {
+			return res.redirect('/login');
+		}
+		try {
+			const allPostData = await Post.findAll();
+			console.log('running')
+			console.log(allPostData);
+			res.render('dashboard', {
+				allPosts: allPostData.map(userPost => userPost.get({ plain: true })),
+				// user: req.session.user,
+			});
+		} catch (e) {
+			res.json(e);
+		}
+	},
+
 	createPost: async (req, res) => {
 		const { title, body } = req.body;
 		try {
