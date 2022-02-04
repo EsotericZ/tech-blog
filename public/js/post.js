@@ -5,10 +5,10 @@ $(document).ready(function() {
 	
     addPostBtn.on('click', async function(event) {
 		event.preventDefault();
-		await $.post('/api/posts', {
+		await $.post('/api/posts/newpost', {
 			title: titleField.val(),
             body: bodyField.val(),
 		});
-		window.location.reload();
+		window.location.href = '/homepage';
 	});
 });
