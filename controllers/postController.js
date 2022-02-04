@@ -37,6 +37,10 @@ module.exports = {
 		}
 	},
 
+	renderPost: async (req, res) => {
+		res.render('newpost');
+	},
+
 	createPost: async (req, res) => {
 		const { title, body } = req.body;
 		try {
