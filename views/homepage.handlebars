@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
@@ -16,7 +16,7 @@
   </div>
 </nav>
 
-<h1>Welcome {{user.username}}</h1>
+{{!-- <h1>Welcome {{user.username}}</h1>
 
 <ul class="list-group">
   {{#each userPosts as |post| }}
@@ -27,4 +27,28 @@
 
 <a href="/newpost">
   <button type="button" class="btn btn-dark" id="createPostBtn">Create New Post</button>
-</a>
+</a> --}}
+
+<h1>Welcome {{user.username}}</h1>
+
+<div class="posts">
+  {{#each userPosts as |post| }}
+  <div class="card">
+    <div class="card-header flex-row justify-space=between">
+      <h2>{{post.title}}</h2>
+    </div>
+    <div class="card-body">
+      {{post.body}}
+    </div> 
+    <div class="postbtn">
+      <button type="button" class="btn btn-dark" id="deletePostBtn">Delete</button>
+      <button type="button" class="btn btn-dark" id="createPostBtn">Edit</button>
+    </div>        
+</div>
+ {{/each}}
+</div>
+<div class="text-center" id="newpostbtn">
+  <a href='/newpost'>
+  <button type="button" class="btn btn-dark" id="createPostBtn">Create New Post</button>
+  </a>
+</div>

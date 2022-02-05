@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
@@ -18,10 +18,26 @@
 
 <h1>Hello world DASH</h1>
 
-<ul class="list-group">
+{{!-- <ul class="list-group">
   {{#each allPosts as |post| }}
       <li>{{post.title}}</li>
       <li>{{post.body}}</li>
       <li>{{post.userId}}</li>
   {{/each}}
-</ul>
+</ul> --}}
+
+<div class="posts">
+  {{#each allPosts as |post| }}
+  <div class="card">
+    <div class="card-header flex-row justify-space=between">
+      <h2>{{post.title}}</h2>
+    </div>
+    <div class="card-body">
+      {{post.body}}
+    </div> 
+    <div class="postbtn">
+      <button type="button" class="btn btn-dark" id="commentBtn">Comment</button>
+    </div>        
+</div>
+ {{/each}}
+</div>
