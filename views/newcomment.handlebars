@@ -6,10 +6,10 @@
           <a class="nav-link active" aria-current="page" href="/homepage">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/dashboard">Dashboard</a>
+          <a class="nav-link active" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
-          <button id="logout">Logout</button>
+          <a class="nav-link active" id="logout">Logout</a>
         </li>
       </ul>
     </div>
@@ -19,8 +19,8 @@
 <div class="card">
   <h1 class="card-header">Add A Comment</h1>
   <form class="card-body new-post-form" id="new-post-form">
-    <label for="remarksField" class="form-label">Title</label>
+    {{!-- <label for="remarksField" class="form-label">Title</label> --}}
     <input type="text" class="form-control" id="remarksField" aria-describedby="emailHelp">
-    <button type="submit" class="btn btn-primary" id="addCommentBtn">Submit</button>
+    <button type="submit" class="btn btn-dark" id="addCommentBtn">Submit</button>
   </form>
 </div>

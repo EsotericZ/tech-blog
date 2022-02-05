@@ -6,38 +6,33 @@
           <a class="nav-link active" aria-current="page" href="/homepage">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/dashboard">Dashboard</a>
+          <a class="nav-link active" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
-          <button id="logout">Logout</button>
+          <a class="nav-link active" id="logout">Logout</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<h1>Hello world DASH</h1>
-
-{{!-- <ul class="list-group">
-  {{#each allPosts as |post| }}
-      <li>{{post.title}}</li>
-      <li>{{post.body}}</li>
-      <li>{{post.userId}}</li>
-  {{/each}}
-</ul> --}}
+<h3>Dashboard</h3>
 
 <div class="posts">
   {{#each allPosts as |post| }}
   <div class="card">
     <div class="card-header flex-row justify-space=between">
       <h2>{{post.title}}</h2>
+      <h4>{{post.createdAt}}</h4>
     </div>
     <div class="card-body">
       {{post.body}}
     </div> 
-    <div class="postbtn">
-      <button type="button" class="btn btn-dark" id="commentBtn">Comment</button>
+    <div>
+      <a href="/newcomment">
+        <button type="button" class="btn btn-dark">Comment</button>
+      </a>
     </div>        
-</div>
- {{/each}}
+  </div>
+  {{/each}}
 </div>

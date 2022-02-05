@@ -6,36 +6,24 @@
           <a class="nav-link active" aria-current="page" href="/homepage">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/dashboard">Dashboard</a>
+          <a class="nav-link active" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
-          <button id="logout">Logout</button>
+          <a class="nav-link active" id="logout">Logout</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-{{!-- <h1>Welcome {{user.username}}</h1>
-
-<ul class="list-group">
-  {{#each userPosts as |post| }}
-      <li>{{post.title}}</li>
-      <li>{{post.body}}</li>
-  {{/each}}
-</ul>
-
-<a href="/newpost">
-  <button type="button" class="btn btn-dark" id="createPostBtn">Create New Post</button>
-</a> --}}
-
-<h1>Welcome {{user.username}}</h1>
+<h3>Welcome {{user.username}}</h3>
 
 <div class="posts">
   {{#each userPosts as |post| }}
   <div class="card">
     <div class="card-header flex-row justify-space=between">
       <h2>{{post.title}}</h2>
+      <h4>{{post.createdAt}}</h4>
     </div>
     <div class="card-body">
       {{post.body}}
@@ -49,6 +37,6 @@
 </div>
 <div class="text-center" id="newpostbtn">
   <a href='/newpost'>
-  <button type="button" class="btn btn-dark" id="createPostBtn">Create New Post</button>
+    <button type="button" class="btn btn-dark" id="createPostBtn">Create New Post</button>
   </a>
 </div>
