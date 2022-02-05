@@ -1,28 +1,28 @@
 const { Model, DataTypes, UUIDV4 } = require('sequelize');
 const sequelize = require('../config');
 
-class Post extends Model {}
+class Comment extends Model {}
 
-Post.init(
+Comment.init(
 	{
 		id: {
 			type: DataTypes.UUID,
 			defaultValue: UUIDV4,
 			primaryKey: true,
 		},
-		title: {
+		remarks: {
 			type: DataTypes.STRING,
 			allowNull: false,
             validate: {
-                max: 100, 
+                max: 500, 
             },
 		},
-		body: {
-			type: DataTypes.STRING,
-			allowNull: false,
-            validate: {
-                max: 1000, 
-            },
+		postId: {
+			type: DataTypes.UUID,
+            references: {
+				model: 'post',
+				key: 'id',
+			}
 		},
 		userId: {
 			type: DataTypes.UUID,
@@ -35,8 +35,8 @@ Post.init(
 	{
 		sequelize,
 		freezeTableName: true,
-		modelName: 'post'
+		modelName: 'comment'
 	}
 );
 
-module.exports = Post;
+module.exports = Comment;
