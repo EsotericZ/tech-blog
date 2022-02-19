@@ -17,4 +17,4 @@ router.post('/logout', logout);
 router.route('/:userId')
 	.get(getUserById);
 
-    module.exports = router;
+module.exports = router;
