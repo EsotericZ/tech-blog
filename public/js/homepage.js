@@ -23,6 +23,13 @@ $(document).ready(function() {
 		console.log(newTitle)
 		console.log(newBody)
 		console.log(postId)
+		event.preventDefault();
+		await $.post('/api/posts/editpost', {
+			title: newTitle, 
+			body: newBody,
+			id: postId,
+		});
+		window.location.reload();
 	});
 
 	deletePostBtn.on('click', async function(event) {
@@ -30,5 +37,9 @@ $(document).ready(function() {
 		const deleteId = $(`#deleteId[delname="${attribute}"]`).val();
 		console.log('clicked del')
 		console.log(deleteId)
+		await $.post('/api/posts/deletepost', {
+			id: deleteId,
+		});
+		window.location.reload();
 	});
 });

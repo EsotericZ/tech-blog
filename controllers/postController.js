@@ -9,7 +9,10 @@ module.exports = {
 			const userPostData = await Post.findAll({
 				where: {
 					userId: req.session.user.id,
-				}
+				},
+				order: [
+					["createdAt", "DESC"],
+				]
 			});
 			res.render('homepage', {
 				userPosts: userPostData.map(userPost => userPost.get({ plain: true })),
@@ -25,12 +28,13 @@ module.exports = {
 			return res.redirect('/login');
 		}
 		try {
-			const allPostData = await Post.findAll();
-			console.log('running')
-			console.log(allPostData);
+			const allPostData = await Post.findAll({
+				order: [
+					["createdAt", "DESC"],
+				]
+			});
 			res.render('dashboard', {
 				allPosts: allPostData.map(userPost => userPost.get({ plain: true })),
-				// user: req.session.user,
 			});
 		} catch (e) {
 			res.json(e);
@@ -44,12 +48,44 @@ module.exports = {
 	createPost: async (req, res) => {
 		const { title, body } = req.body;
 		try {
-			const newPost = await Post.create({
+			await Post.create({
 				title,
                 body,
 				userId: req.session.user.id,
 			});
-			res.json({ newPost });
+			res.redirect(request.get('referer'));
+		} catch (e) {
+			res.json(e);
+		}
+	},
+
+	editPost: async (req, res) => {
+		const { title, body, id } = req.body;
+		try {
+			await Post.update({
+				title,
+				body,
+			},
+			{
+				where: {
+					id
+				}
+			});
+			res.redirect(request.get('referer'));
+		} catch (e) {
+			res.json(e);
+		}
+	},
+
+	deletePost: async (req, res) => {
+		const { id } = req.body;
+		try {
+			await Post.destroy({
+				where: {
+					id
+				}
+			});
+			res.redirect(request.get('referer'));
 		} catch (e) {
 			res.json(e);
 		}
