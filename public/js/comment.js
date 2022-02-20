@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	const psotInfo = $('#postInfo');
 	const addCommentBtn = $(".addCommentBtn");
 	
     addCommentBtn.on('click', async function(event) {

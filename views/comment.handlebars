@@ -1,0 +1,27 @@
+{{> navbar}}
+
+<h3>Post Comments</h3>
+
+<h2>{{ posts.id }}</h2>
+<h2>{{ posts.title }}</h2>
+<h2>{{ posts.body }}</h2>
+
+{{#each allComments as |com|}}
+    <h2>{{ com.remarks }}</h2>
+    <h2>Working?</h2>
+{{/each}}
+{{!-- <div class="col-lg-12 p-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card mt-2">
+                    <div class="card-body bg-root" id="informationPageInfo"> --}}
+                        {{!-- <h3 class="card-title text-start" id="postInfo" data-postId={{ postId.id }}> --}}
+                            {{!-- {{ childId.firstName }} {{ childId.lastName }}:</h3> --}}
+                        {{!-- </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
