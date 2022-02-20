@@ -2,26 +2,56 @@
 
 <h3>Post Comments</h3>
 
-<h2>{{ posts.id }}</h2>
-<h2>{{ posts.title }}</h2>
-<h2>{{ posts.body }}</h2>
+<div class="comments">
+  <div class="card col d-flex justify-content-center">
+    <div class="card-header flex-row justify-space-between">
+      <h2>{{ posts.title }}</h2>
+    </div>
+    <div class="card-body">
+      {{ posts.body }}
+    </div> 
+  </div>
+</div>
 
-{{#each allComments as |com|}}
-    <h2>{{ com.remarks }}</h2>
-    <h2>Working?</h2>
+{{#each allComments as |com| }}
+  <div class="comments">
+    <div class="card col d-flex justify-content-center">
+      <div class="card-header flex-row justify-space-between">
+        <div id="username"><h5>{{ user.username }}</h5></div>
+        <div><h5>{{ com.createdAt }}</h5></div>
+      </div>
+      <div class="card-body">
+        {{ com.remarks }}
+      </div> 
+    </div>
+  </div>
 {{/each}}
-{{!-- <div class="col-lg-12 p-2">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="card mt-2">
-                    <div class="card-body bg-root" id="informationPageInfo"> --}}
-                        {{!-- <h3 class="card-title text-start" id="postInfo" data-postId={{ postId.id }}> --}}
-                            {{!-- {{ childId.firstName }} {{ childId.lastName }}:</h3> --}}
-                        {{!-- </h3>
+
+<button type="button" data-bs-toggle="modal" data-bs-target="#addComment" class="btn btn-dark btn-sm">
+  Comment
+</button>
+
+  <!-- Add Comment Modal -->
+<div class="modal fade" id="addComment" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelEvent" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabelEvent">Add Comment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div ="container-fluid">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="newComment">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="hidden" class="form-control" value="{{ posts.id }}" id="newComPostId">
                     </div>
                 </div>
             </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark addCommentBtn" data-bs-dismiss="modal">Submit</button>
+            </div>
         </div>
     </div>
-</div> --}}
+</div>

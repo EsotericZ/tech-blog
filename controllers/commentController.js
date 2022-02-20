@@ -1,4 +1,4 @@
-const { Comment, Post } = require('../models');
+const { Comment, Post, User } = require('../models');
 
 module.exports = {
 
@@ -14,6 +14,13 @@ module.exports = {
                 where: {
                     postId
                 },
+				include: [{
+					model: User,
+					attributes: ['username', ],
+				}],
+                order: [
+					["createdAt", "ASC"],
+				],
             });
             const postData = await Post.findByPk(postId);
             res.render('comment', {
