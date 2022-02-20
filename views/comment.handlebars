@@ -15,10 +15,10 @@
 
 {{#each allComments as |com| }}
   <div class="comments">
-    <div class="card col d-flex justify-content-center">
+    <div class="card col d-flex justify-content-center" id="commentBody">
       <div class="card-header flex-row justify-space-between">
         <div id="username"><h5>{{ user.username }}</h5></div>
-        <div><h5>{{ com.createdAt }}</h5></div>
+        <div id="ceated"><h4>{{ com.createdAt }}</h4></div>
       </div>
       <div class="card-body">
         {{ com.remarks }}
@@ -27,7 +27,7 @@
   </div>
 {{/each}}
 
-<button type="button" data-bs-toggle="modal" data-bs-target="#addComment" class="btn btn-dark btn-sm">
+<button type="button" data-bs-toggle="modal" data-bs-target="#addComment" class="btn btn-dark btn-sm" id="commentBtn">
   Comment
 </button>
 

@@ -1,5 +1,5 @@
 :root {
-  --primary: rgb(233, 182, 233);
+  --primary: rgb(197, 196, 197);
 }
 
 * {
@@ -21,23 +21,34 @@ body {
   font-size: 40px;
 }
 
-
-
 h3 {
     margin-left: 20px;
+    font-size: 40px;
  }
  h2 {
    float: left;
+   vertical-align: middle;
+   margin-top: 5px;
  }
 
  h4 {
    float: right;
-   font-size: 18px;
+   font-size: 14px;
  }
 
  h2,h4 {
    display: inline;
  }
+
+ #username {
+  margin-left: 98%;
+  font-size: 14px;
+}
+
+#created{
+  margin-left: 32%;
+  font-size: 14px;
+}
 
 .card {
     border: black 1px solid;
@@ -46,6 +57,7 @@ h3 {
 
 .card-header {
     background-color:rgb(219, 219, 219);
+    max-height: 70px;
 }
 
 .card-body {
@@ -53,11 +65,11 @@ h3 {
 }
 
 .postbtn {
-    margin: 5px;
+    margin: 4px;
 }
 
 .btn {
-  margin: 5px;
+  margin: 4px;
 }
 
 #addPostBtn {
@@ -75,4 +87,24 @@ h3 {
 .form-signin {
   padding: 5px;
   margin: 5px;
+}
+
+#commentBtn {
+  padding: 5px;
+  margin-left: 20px;
+}
+
+#comments {
+  color: black;
+  font-size: 16px;
+}
+
+a {
+  color: black;
+  margin: 5px;
+}
+
+#commentBody {
+  max-width: 94%;
+  margin-left: 3%;
 }
