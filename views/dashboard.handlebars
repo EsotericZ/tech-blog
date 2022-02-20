@@ -6,17 +6,49 @@
   {{#each allPosts as |post| }}
   <div class="card">
     <div class="card-header flex-row justify-space=between">
-      <h2>{{post.title}}</h2>
-      <h4>{{post.createdAt}}</h4>
+      <h2>{{ post.title }}</h2>
+      <h4>{{ user.username }}</h4>
+        <div>
+          <h4>{{ post.createdAt }}</h4>
+        </div>
     </div>
+
     <div class="card-body">
-      {{post.body}}
-    </div> 
+      {{ post.body }}
+    </div>
+    {{!-- {{> testy}} --}}
     <div>
-      <a href="/newcomment">
-        <button type="button" class="btn btn-dark test" id="{{post.id}}">Comment + {{post.id}}</button>
-      </a>
+      <button type="button" data-bs-toggle="modal" data-bs-target="#c{{ post.id }}" class="btn btn-dark btn-sm">
+        Comment
+      </button>
     </div>        
   </div>
+
+    <!-- Edit Post Modal -->
+  <div class="modal fade" id="c{{ post.id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabelEvent" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabelEvent">Add Comment</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                  <div ="container-fluid">
+                      <div class="input-group mb-3">
+                          <span class="input-group-text col-5">Title</span>
+                          <input type="text" class="form-control" id="newComment" comname="{{ post.id }}">
+                      </div>
+                      <div class="input-group mb-3">
+                          <input type="hidden" class="form-control" value="{{ post.id }}" id="newComPostId" comname="{{ post.id }}">
+                      </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-dark addCommentBtn" data-bs-dismiss="modal" comname="{{ post.id }}">Submit</button>
+              </div>
+          </div>
+      </div>
+  </div>
+
   {{/each}}
 </div>

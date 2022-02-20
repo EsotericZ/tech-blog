@@ -1,4 +1,4 @@
-const { Post } = require('../models');
+const { Post, Comment, User } = require('../models');
 
 module.exports = {
 	getUserPosts: async (req, res) => {
@@ -29,6 +29,14 @@ module.exports = {
 		}
 		try {
 			const allPostData = await Post.findAll({
+				include: [{
+					model: Comment,
+					attributes: ['remarks', 'createdAt', 'postId'],
+				},
+				{
+					model: User,
+					attributes: ['username'],
+				}],
 				order: [
 					["createdAt", "DESC"],
 				]

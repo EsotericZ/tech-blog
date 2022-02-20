@@ -1,14 +1,15 @@
 $(document).ready(function() {
-	const remarksField = $('#remarksField');
-	// const addCommentBtn = $("#addCommentBtn");
-	const addCommentBtn = $(".test");
+	const addCommentBtn = $(".addCommentBtn");
 	
     addCommentBtn.on('click', async function(event) {
+		const attribute = event.target.getAttribute('comname');
+		const newComment = $(`#newComment[comname="${attribute}"]`).val();
+		const newComPostId = $(`#newComPostId[comname="${attribute}"]`).val();
 		event.preventDefault();
-		alert(this.id)
 		await $.post('/api/comments/newcomment', {
-			remarks: remarksField.val(),
+			remarks: newComment,
+			postId: newComPostId,
 		});
-		// window.location.href = '/dashboard';
+		window.location.reload();
 	});
 });
